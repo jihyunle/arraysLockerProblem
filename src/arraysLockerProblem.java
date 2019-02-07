@@ -9,21 +9,22 @@ Print out the locker numbers that remain open. What do you notice about the lock
 public class arraysLockerProblem {
 
     public static void main(String[]args){
-        boolean[] lockers = new boolean[100];
+        boolean[] lockers = new boolean[101];
 
         // Open all lockers by setting bool value to true
-//        openAllLockers(lockers);
+        openAllLockers(lockers);
 
         // Change locker status as needed
         changeLockerStatus(lockers);
 
         // Print
+        System.out.println("Lockers remaining open: ");
         print(lockers);
     }
 
     public static void openAllLockers(boolean[] lockers){
         for (int i=0; i<lockers.length; i++){
-            lockers[i] = true;
+            lockers[i] = true;  // open all
         }
     }
 
@@ -31,11 +32,11 @@ public class arraysLockerProblem {
         /*
         * Change the status of nth locker as n approaches 100
         * Outer loop goes through every locker*/
-        for (int i = 0; i < lockers.length; i++){
+        for (int i = 1; i < lockers.length; i++){
 
             // Inner loop does the closing/opening every nth locker
-            for (int j = i; j < lockers.length; j += (i+1)){
-                    lockers[j] = !lockers[j];
+            for (int n = i; n < lockers.length; n += (i+1)){    // n has to increment by i+1 as i increases each iteration in the outerloop
+                    lockers[n] = !lockers[n];
             }
         }
     }
